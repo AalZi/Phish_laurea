@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* Email header bar */
+    .email-header-bar {
+      background: #1a3d22;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .meta-block {
+      background: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      padding: 12px 20px;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .meta-block span { color: #1a1a1a; font-weight: 600; }
+
+    /* Body */
+    .email-body {
+      padding: 28px 32px;
+      line-height: 1.7;
+    }
+
+    .greeting { margin-bottom: 16px; }
+
+    p { margin-bottom: 14px; }
+
+    /* Alert box */
+    .alert {
+      background: #fff3cd;
+      border-left: 4px solid #e0a800;
+      padding: 12px 16px;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+
+    .alert strong { display: block; margin-bottom: 4px; }
+
+    /* CTA button */
+    .cta-wrap {
+      text-align: center;
+      margin: 28px 0;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #1a3d22;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 13px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 3px;
+    }
+
+    /* Disguised link — visible text shows real domain, href points to sim */
+    .inline-link {
+      color: #0078d4;
+    }
+
+    /* Deadline */
+    .deadline {
+      font-weight: 700;
+      color: #c0392b;
+    }
+
+    /* Footer / signature */
+    .sig {
+      border-top: 1px solid #e0e0e0;
+      margin-top: 28px;
+      padding-top: 18px;
+      font-size: 13px;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .sig .name { font-weight: 700; font-size: 14px; color: #1a1a1a; }
+    .sig .title { color: #666; }
+    .sig .org { color: #1a3d22; font-weight: 600; }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: #f8f8f8;
+      border-top: 1px solid #ddd;
+      padding: 12px 20px;
+      font-size: 11px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* Excuse banner — mimics IT notice */
+    .routing-notice {
+      background: #eaf3fb;
+      border: 1px solid #b3d4ed;
+      border-radius: 3px;
+      padding: 8px 14px;
+      font-size: 12px;
+      color: #1a5276;
+      margin-bottom: 20px;
+    }
+
+    .routing-notice::before {
+      content: "ℹ️  ";
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Simulated email client metadata strip -->
+  <div class="meta-block">
+    <div><b>Lähettäjä:</b> <span>Jouni Kähkönen</span> &lt;jouni.kahkonen@laurea-itsupport.fi&gt;</div>
+    <div><b>Vastaanottaja:</b> <span>Jouni Koski</span> &lt;jouni.koski@laurea.fi&gt;</div>
+    <div><b>Aihe:</b> <span>[KIIREELLINEN] Pakollinen tilin vahvistaminen – johdon SSO-päivitys</span></div>
+    <div><b>Päivämäärä:</b> <span>24.5.2025  09:17</span></div>
+  </div>
+
+  <div class="email-body">
+
+    <!-- Sender-domain excuse -->
+    <div class="routing-notice">
+      Tämä viesti on lähetetty Laurean IT-tuen varareitityspalvelun kautta
+      (<em>laurea-itsupport.fi</em>). Ensisijainen Exchange-palvelin on väliaikaisesti
+      eristetty tietoturvapäivityksen aikana. Lisätietoja: <em>incident #INC-2025-0524</em>.
+    </div>
+
+    <p class="greeting">Hyvä Jouni Koski,</p>
+
+    <p>
+      Laurean IT-turvallisuustiimi on havainnut epätavallista kirjautumisaktiviteettia
+      useissa johdon käyttäjätileissä viimeisen 12 tunnin aikana. Turvallisuussyistä
+      kaikkien johtoryhmän jäsenten on vahvistettava henkilöllisyytensä ja päivitettävä
+      istuntotietonsa Laurean keskitetyssä identiteetinhallintaportaalissa.
+    </p>
+
+    <div class="alert">
+      <strong>&#9888;&#65039; Toimenpide vaaditaan</strong>
+      Vahvistamatta jättäminen <span class="deadline">kahden (2) tunnin kuluessa</span>
+      johtaa tilin automaattiseen lukitsemiseen tietoturvaprotokollien mukaisesti.
+      Tili avataan uudelleen vasta IT-tuen tekemän henkilökohtaisen vahvistuksen jälkeen.
+    </div>
+
+    <p>
+      Pyydämme teitä kirjautumaan sisään alla olevasta linkistä käyttäen
+      Laurea ID -tunnuksianne. Prosessi kestää alle kaksi minuuttia.
+    </p>
+
+    <!-- CTA — visible text: real domain, href: sim page -->
+    <div class="cta-wrap">
+      <a class="cta-btn"
+         href="http://lm.laurea.thmz.org/login.html"
+         target="_blank">
+        Vahvista tilisi nyt &rarr;
+      </a>
+    </div>
+
+    <p>
+      Jos painike ei toimi, kopioi seuraava osoite selaimesi osoitepalkkiin:<br>
+      <!-- Anchor text shows legit URL, href goes to sim -->
+      <a class="inline-link"
+         href="http://lm.laurea.thmz.org/login.html">
+        https://iam.laurea.fi/IdentityManager
+      </a>
+    </p>
+
+    <p>
+      Mikäli teillä on kysymyksiä tai epäilytte viestin aitoutta, voitte soittaa
+      suoraan IT-tukeen numeroon <strong>09 8868 7000</strong> tai lähettää viestin
+      osoitteeseen <strong>it-support@laurea.fi</strong>.
+    </p>
+
+    <p>Pahoittelemme aiheutunutta vaivaa ja kiitämme yhteistyöstä.</p>
+
+    <!-- Signature -->
+    <div class="sig">
+      <div class="name">Jouni Kähkönen</div>
+      <div class="title">IT-asiantuntija / IT Expert</div>
+      <div class="org">Laurea-ammattikorkeakoulu</div>
+      <div>Tietohallinto &amp; Tietoturva</div>
+      <div>Puh. +358 9 8868 7212</div>
+      <div>jouni.kahkonen@laurea.fi</div>
+    </div>
+
+  </div>
+
+  <!-- Disclaimer footer — mimics corporate email footer -->
+  <div class="disclaimer">
+    Tämä sähköpostiviesti ja sen mahdolliset liitteet on tarkoitettu ainoastaan
+    nimetylle vastaanottajalle. Jos olette vastaanottanut tämän viestin virheellisesti,
+    ilmoittakaa asiasta lähettäjälle ja poistakaa viesti. Laurea-ammattikorkeakoulu /
+    Laurea University of Applied Sciences | Ratatie 22, 01300 Vantaa | www.laurea.fi
+  </div>
+
+</body>
+</html>

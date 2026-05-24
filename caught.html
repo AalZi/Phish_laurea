@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Simulation — Security Awareness</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f4f4;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      max-width: 620px;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* Red warning banner */
+    .banner {
+      background: #c0392b;
+      color: #fff;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .banner-icon {
+      font-size: 40px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .banner h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .banner p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* Body */
+    .body {
+      padding: 32px;
+    }
+
+    .alert-box {
+      background: #fef3cd;
+      border: 1px solid #f0c040;
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: #7a5500;
+      line-height: 1.5;
+    }
+
+    .alert-box strong { display: block; margin-bottom: 4px; font-size: 15px; }
+
+    /* Credential reveal */
+    .cred-section {
+      margin-bottom: 28px;
+    }
+
+    .cred-section h2 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    .cred-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .cred-table td {
+      padding: 10px 14px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .cred-table td:first-child {
+      width: 120px;
+      background: #f8f8f8;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .cred-value {
+      font-family: "Consolas", "Courier New", monospace;
+      color: #c0392b;
+      word-break: break-all;
+    }
+
+    /* What happened */
+    .info-section h2 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    .info-section ul {
+      padding-left: 20px;
+      line-height: 1.8;
+      color: #444;
+      font-size: 14px;
+    }
+
+    .info-section ul li { margin-bottom: 4px; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 24px 0;
+    }
+
+    /* Footer */
+    .footer-note {
+      background: #1a3d22;
+      color: #fff;
+      padding: 18px 32px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-note a {
+      color: #a8e6b8;
+    }
+
+    .safe-note {
+      font-size: 12px;
+      color: #888;
+      margin-top: 20px;
+      padding: 10px 14px;
+      background: #f0f8f0;
+      border-left: 3px solid #1a3d22;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="banner">
+      <div class="banner-icon">&#9888;</div>
+      <div>
+        <h1>You failed the phishing simulation</h1>
+        <p>This was a controlled security awareness test by Laurea IT Security.</p>
+      </div>
+    </div>
+
+    <div class="body">
+
+      <div class="alert-box">
+        <strong>This was NOT a real login page.</strong>
+        You just submitted your credentials to a simulated phishing site. In a real attack, your
+        username and password would now be in the hands of an attacker.
+      </div>
+
+      <div class="cred-section">
+        <h2>What you submitted</h2>
+        <table class="cred-table">
+          <tr>
+            <td>Username</td>
+            <td class="cred-value" id="show-user">—</td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td class="cred-value" id="show-pass">—</td>
+          </tr>
+        </table>
+        <p class="safe-note">
+          &#128274;&nbsp; Your credentials were <strong>not stored or transmitted</strong>.
+          They are displayed here only to show you what a real attacker would have captured.
+          This page has no server — everything runs locally in your browser.
+        </p>
+      </div>
+
+      <hr class="divider">
+
+      <div class="info-section">
+        <h2>What to watch for next time</h2>
+        <ul>
+          <li>Always check the URL bar — the real Laurea login is at <strong>tunnistus.laurea.fi</strong></li>
+          <li>Look for a valid HTTPS padlock and the correct domain before entering credentials</li>
+          <li>Be suspicious of links received via email, SMS, or Teams messages</li>
+          <li>If unsure, navigate directly to the site — do not click the link</li>
+          <li>Report suspicious emails to <strong>it-support@laurea.fi</strong></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      &#128218;&nbsp; Complete the security awareness training at your learning portal to learn more about phishing attacks.
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const u = params.get('u') || '(not provided)';
+      const p = params.get('p') || '(not provided)';
+      document.getElementById('show-user').textContent = u;
+      document.getElementById('show-pass').textContent = p;
+      // Immediately clear the URL so credentials don't linger in browser history
+      history.replaceState(null, '', window.location.pathname);
+    })();
+  </script>
+
+</body>
+</html>

